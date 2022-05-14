@@ -1,0 +1,91 @@
+.Navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 50px;
+  background-color: #000;
+
+  #logo {
+    width: 150px;
+    cursor: pointer;
+  }
+
+  .left-links {
+    display: flex;
+    align-items: center;
+
+    .nav-wrap {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      color: #8d8b8b;
+      margin: 0 20px;
+
+      .nav-links {
+        padding: 0 15px;
+        cursor: pointer;
+        transition: 0.2s ease;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .right-links {
+    display: flex;
+    align-items: center;
+    color: #fff;
+
+    i {
+      margin: 0 20px;
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .acc-box {
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+      .acc-img {
+        width: 30px;
+        height: 30px;
+        background-color: red;
+      }
+
+      i {
+        margin: 0 8px;
+      }
+
+      .acc-dropdown {
+        display: none;
+        position: absolute;
+        top: 60px;
+        right: 50px;
+        padding: 20px;
+        background-color: #000;
+        list-style: none;
+        z-index: 3;
+
+        .dropdown-links {
+          padding: 10px;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .acc-dropdown.active {
+        display: block;
+      }
+    }
+  }
+}

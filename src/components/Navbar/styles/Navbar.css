@@ -1,0 +1,96 @@
+.Navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 50px;
+  background-color: #000;
+}
+
+.Navbar #logo {
+  width: 150px;
+  cursor: pointer;
+}
+
+.Navbar .left-links {
+  display: flex;
+  align-items: center;
+}
+
+.Navbar .left-links .nav-wrap {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  color: #8d8b8b;
+  margin: 0 20px;
+}
+
+.Navbar .left-links .nav-wrap .nav-links {
+  padding: 0 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.Navbar .left-links .nav-wrap .nav-links:hover {
+  color: #fff;
+}
+
+.Navbar .right-links {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.Navbar .right-links i {
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.Navbar .right-links a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.Navbar .right-links a:hover {
+  text-decoration: underline;
+}
+
+.Navbar .right-links .acc-box {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.Navbar .right-links .acc-box .acc-img {
+  width: 30px;
+  height: 30px;
+  background-color: red;
+}
+
+.Navbar .right-links .acc-box i {
+  margin: 0 8px;
+}
+
+.Navbar .right-links .acc-box .acc-dropdown {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 50px;
+  padding: 20px;
+  background-color: #000;
+  list-style: none;
+  z-index: 3;
+}
+
+.Navbar .right-links .acc-box .acc-dropdown .dropdown-links {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.Navbar .right-links .acc-box .acc-dropdown .dropdown-links:hover {
+  text-decoration: underline;
+}
+
+.Navbar .right-links .acc-box .acc-dropdown.active {
+  display: block;
+}
+/*# sourceMappingURL=Navbar.css.map */
