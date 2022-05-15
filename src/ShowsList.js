@@ -39,4 +39,14 @@ export const ShowsList = [
     about:
       "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.",
   },
+  {
+    id: 5,
+    title: "Rick and Morty",
+    img: require("./img/rickmorty.jpg"),
+    img2: require("./img/rickmorty2.jpg"),
+    date: "2013",
+    season: "5",
+    about:
+      "Brilliant but alcoholic scientist Rick takes his grumpy grandson Morty with him as he makes wild escapes to other worlds and alternate dimensions.",
+  },
 ];

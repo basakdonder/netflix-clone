@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Slider from "react-slick";
 import "./styles/Main.css";
 import img1 from "../../img/stranger-things-1.png";
 import { ShowsList } from "../../ShowsList";
@@ -15,6 +16,13 @@ function Main() {
   const [selectedAbout, setSelectedAbout] = useState(about);
   const [selectedDate, setSelectedDate] = useState(date);
   const [selectedSeason, setSelectedSeason] = useState(season);
+
+  const settings = {
+    infinite: false,
+    speed: 500,
+    slidesToScroll: 1,
+    variableWidth: true,
+  };
 
   return (
     <div className="Main">
@@ -44,43 +52,47 @@ function Main() {
       </div>
       <div className="shows-container">
         <h3>Explore</h3>
-        {ShowsList.map(({ id, title, img, img2, about, date, season }) => {
-          return (
-            <img
-              key={id}
-              className="show"
-              src={img}
-              alt={title}
-              onClick={() => {
-                setSelectedTitle(title);
-                setSelectedImg(img2);
-                setSelectedAbout(about);
-                setSelectedDate(date);
-                setSelectedSeason(season);
-              }}
-            />
-          );
-        })}
+        <Slider {...settings}>
+          {ShowsList.map(({ id, title, img, img2, about, date, season }) => {
+            return (
+              <img
+                key={id}
+                className="show"
+                src={img}
+                alt={title}
+                onClick={() => {
+                  setSelectedTitle(title);
+                  setSelectedImg(img2);
+                  setSelectedAbout(about);
+                  setSelectedDate(date);
+                  setSelectedSeason(season);
+                }}
+              />
+            );
+          })}
+        </Slider>
       </div>
       <div className="shows-container">
         <h3>My List</h3>
-        {MyList.map(({ id, title, img, img2, about, date, season }) => {
-          return (
-            <img
-              key={id}
-              className="show"
-              src={img}
-              alt={title}
-              onClick={() => {
-                setSelectedTitle(title);
-                setSelectedImg(img2);
-                setSelectedAbout(about);
-                setSelectedDate(date);
-                setSelectedSeason(season);
-              }}
-            />
-          );
-        })}
+        <Slider {...settings}>
+          {MyList.map(({ id, title, img, img2, about, date, season }) => {
+            return (
+              <img
+                key={id}
+                className="show"
+                src={img}
+                alt={title}
+                onClick={() => {
+                  setSelectedTitle(title);
+                  setSelectedImg(img2);
+                  setSelectedAbout(about);
+                  setSelectedDate(date);
+                  setSelectedSeason(season);
+                }}
+              />
+            );
+          })}
+        </Slider>
       </div>
     </div>
   );

@@ -60,7 +60,7 @@
     height: 550px;
     background-image: linear-gradient(
       to right,
-      rgb(0, 0, 0) 20%,
+      rgb(0, 0, 0) 30%,
       rgba(255, 255, 255, 0)
     );
   }
@@ -87,10 +87,5 @@
     margin-right: 5px;
     transition: 0.2s ease;
     cursor: pointer;
-
-    &:hover {
-      width: 305px;
-      height: 155px;
-    }
   }
 }
