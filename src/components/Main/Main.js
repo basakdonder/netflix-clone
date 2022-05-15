@@ -16,6 +16,7 @@ function Main() {
   const [selectedAbout, setSelectedAbout] = useState(about);
   const [selectedDate, setSelectedDate] = useState(date);
   const [selectedSeason, setSelectedSeason] = useState(season);
+  const [isShowed, setIsShowed] = useState(false);
 
   const settings = {
     infinite: false,
@@ -51,7 +52,7 @@ function Main() {
         <img id="main-img" src={selectedImg} alt={selectedTitle} />
       </div>
       <div className="shows-container">
-        <h3>Explore</h3>
+        <h3>Netflix Originals</h3>
         <Slider {...settings}>
           {ShowsList.map(({ id, title, img, img2, about, date, season }) => {
             return (
@@ -88,11 +89,38 @@ function Main() {
                   setSelectedAbout(about);
                   setSelectedDate(date);
                   setSelectedSeason(season);
+                  setIsShowed(true);
                 }}
               />
             );
           })}
         </Slider>
+      </div>
+      <div
+        className={isShowed ? "previev-container showed" : "previev-container"}
+      >
+        <div className="preview-box">
+          <i
+            class="fa-solid fa-xmark"
+            onClick={() => {
+              setIsShowed(false);
+            }}
+          ></i>
+          <img src={selectedImg} alt={selectedTitle} />
+          <div className="main-info">
+            <h1>{selectedTitle}</h1>
+            <div className="about-show">
+              {selectedDate} | {selectedSeason} Seasons
+            </div>
+            <div className="about-show">
+              <p>{selectedAbout}</p>
+            </div>
+            <div className="buttons">
+              <button className="btn btn-watch">Watch Now</button>
+              <button className="btn btn-add">My List</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
