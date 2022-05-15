@@ -19,4 +19,14 @@ export const MyList = [
     about:
       "Geralt of Rivia, a mutated monster hunter, is on her way to her destiny in a chaotic world where humans are often more sinister than creatures.",
   },
+  {
+    id: 3,
+    title: "Rick and Morty",
+    img: require("./img/rickmorty.jpg"),
+    img2: require("./img/rickmorty2.jpg"),
+    date: "2013",
+    season: "5",
+    about:
+      "Brilliant but alcoholic scientist Rick takes his grumpy grandson Morty with him as he makes wild escapes to other worlds and alternate dimensions.",
+  },
 ];
