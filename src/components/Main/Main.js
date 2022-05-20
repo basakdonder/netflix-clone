@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
 import "./styles/Main.css";
-import img1 from "../../img/stranger-things-1.png";
 import { ShowsList } from "../../ShowsList";
 import { MyList } from "../../MyList";
-const about =
-  "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.";
-
-const date = "2016";
-const season = "4";
 
 function Main() {
-  const [selectedTitle, setSelectedTitle] = useState("Stranger Things");
-  const [selectedImg, setSelectedImg] = useState(img1);
-  const [selectedAbout, setSelectedAbout] = useState(about);
-  const [selectedDate, setSelectedDate] = useState(date);
-  const [selectedSeason, setSelectedSeason] = useState(season);
   const [isShowed, setIsShowed] = useState(false);
+  const [selected, setSelected] = useState({
+    title: "Stranger Things",
+    img: require("../../img/stranger-things-1.png"),
+    about:
+      "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.",
+    date: "2016",
+    season: "4",
+  });
 
   const settings = {
     infinite: false,
@@ -29,12 +26,12 @@ function Main() {
     <div className="Main">
       <div className="main-img-container">
         <div className="main-info">
-          <h1>{selectedTitle}</h1>
+          <h1>{selected.title}</h1>
           <div className="about-show">
-            {selectedDate} | {selectedSeason} Seasons
+            {selected.date} | {selected.season} Seasons
           </div>
           <div className="about-show">
-            <p>{selectedAbout}</p>
+            <p>{selected.about}</p>
           </div>
           <div className="buttons">
             <div className="button btn-mylist">
@@ -49,24 +46,26 @@ function Main() {
           </div>
         </div>
         <div className="main-gradient"></div>
-        <img id="main-img" src={selectedImg} alt={selectedTitle} />
+        <img id="main-img" src={selected.img} alt={selected.title} />
       </div>
       <div className="shows-container">
         <h3>Netflix Originals</h3>
         <Slider {...settings}>
-          {ShowsList.map(({ id, title, img, img2, about, date, season }) => {
+          {ShowsList.map((show) => {
             return (
               <img
-                key={id}
+                key={show.id}
                 className="show"
-                src={img}
-                alt={title}
+                src={show.img}
+                alt={show.title}
                 onClick={() => {
-                  setSelectedTitle(title);
-                  setSelectedImg(img2);
-                  setSelectedAbout(about);
-                  setSelectedDate(date);
-                  setSelectedSeason(season);
+                  setSelected({
+                    title: show.title,
+                    img: show.img2,
+                    about: show.about,
+                    date: show.date,
+                    season: show.season,
+                  });
                 }}
               />
             );
@@ -76,19 +75,21 @@ function Main() {
       <div className="shows-container">
         <h3>My List</h3>
         <Slider {...settings}>
-          {MyList.map(({ id, title, img, img2, about, date, season }) => {
+          {MyList.map((myList) => {
             return (
               <img
-                key={id}
+                key={myList.id}
                 className="show"
-                src={img}
-                alt={title}
+                src={myList.img}
+                alt={myList.title}
                 onClick={() => {
-                  setSelectedTitle(title);
-                  setSelectedImg(img2);
-                  setSelectedAbout(about);
-                  setSelectedDate(date);
-                  setSelectedSeason(season);
+                  setSelected({
+                    title: myList.title,
+                    img: myList.img2,
+                    about: myList.about,
+                    date: myList.date,
+                    season: myList.season,
+                  });
                   setIsShowed(true);
                 }}
               />
@@ -106,14 +107,14 @@ function Main() {
               setIsShowed(false);
             }}
           ></i>
-          <img src={selectedImg} alt={selectedTitle} />
+          <img src={selected.img} alt={selected.title} />
           <div className="main-info">
-            <h1>{selectedTitle}</h1>
+            <h1>{selected.title}</h1>
             <div className="about-show">
-              {selectedDate} | {selectedSeason} Seasons
+              {selected.date} | {selected.season} Seasons
             </div>
             <div className="about-show">
-              <p>{selectedAbout}</p>
+              <p>{selected.about}</p>
             </div>
             <div className="buttons">
               <button className="btn btn-watch">Watch Now</button>
