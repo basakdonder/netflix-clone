@@ -1,26 +1,39 @@
 "use client";
-import { useEffect, useState } from "react"
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function Home() {
     const [movies, setMovies] = useState([])
-    useEffect(() => {
+    const [genres, setGenres] = useState([])
 
-      const fetchData = async () => {
-        fetch('/api/movies')
-          .then((res) => res.json())
-          .then((data) => {
-            setMovies(data.data.results);
-          });
-      }
-      fetchData();
-      }, []);
+    const fetchMovies = async () => {
+      const { data } = await axios.get("/api/movies");
+      setMovies(data?.data.results);
+    }
+
+    const fetchMovieGenre = async () => {
+      const { data } = await axios.get("/api/genre/movie");
+      setGenres(data?.data.genres);
+    }
+
+    useEffect(() => {
+      fetchMovies();
+      fetchMovieGenre();
+    }, []);
 
   return (
     <>
-        <h1>Movies</h1>
+        <h1 className="test">Movies</h1>
         {
             movies?.map((movie) => (
-                <p key={movie.id}>{movie.title}</p>
+              <div key={movie.id}>
+                <p>{movie.title}</p>
+                {
+                  genres?.map((genre)=> (
+                    movie.genre_ids.includes(genre.id) ? <li key={genre.id}>{genre.name}</li> : ""
+                  ))
+                }
+              </div>
             ))
         }
     </>
