@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar {
+  @apply flex flex-row items-center justify-between px-5 py-3 w-full absolute top-0 left-0;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 50px 36px -28px inset;
+
+  .nav-items,
+  .search-items {
+    @apply hidden flex-row items-center justify-center space-x-5 mx-3 lg:flex;
+  }
+
+  a {
+    @apply flex items-center justify-center space-x-2 duration-300 text-neutral-200 hover:text-neutral-400;
+  }
+}
