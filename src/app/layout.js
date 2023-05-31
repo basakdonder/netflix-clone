@@ -1,16 +1,16 @@
 import "./assets/css/globals.css"
 import "./assets/css/tw.scss"
-import { Inter } from 'next/font/google';
-import Header from "./components/header/layout"
+import { Inter } from "next/font/google"
+import Header from "./components/Header"
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
   title: "Netflix Clone",
   description: "Netflix Clone coded with Next.js 13 and TMDB API",
   icons: {
-    icon:"/favicon.ico",
-  }
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({ children }) {
@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <Header />
 
-        <section>{children}</section>
+        {children}
       </body>
     </html>
   )
