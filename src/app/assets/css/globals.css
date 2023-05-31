@@ -8,6 +8,7 @@
 }
 
 body {
+  @apply w-full h-screen;
   color: rgb(var(--foreground-color));
   background-color: rgb(var(--background-color));
 }

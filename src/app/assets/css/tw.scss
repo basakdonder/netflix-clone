@@ -4,7 +4,8 @@
 
 .navbar {
   @apply flex flex-row items-center justify-between px-5 py-3 w-full absolute top-0 left-0;
-  box-shadow: rgba(0, 0, 0, 0.7) 0px 50px 36px -28px inset;
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 60px 36px -28px inset;
+  z-index: 99;
 
   .nav-items,
   .search-items {
@@ -13,5 +14,58 @@
 
   a {
     @apply flex items-center justify-center space-x-2 duration-300 text-neutral-200 hover:text-neutral-400;
+  }
+}
+
+.page-content {
+  .banner-area {
+    .banner-area--wrapper {
+      @apply relative w-full h-screen bg-no-repeat bg-cover bg-center;
+
+      .banner-area--info {
+        @apply w-full absolute bottom-3 p-5 lg:w-[500px];
+
+        .title--wrapper {
+          @apply flex flex-row items-center space-x-2 font-bold uppercase text-neutral-300;
+          letter-spacing: 5px;
+        }
+
+        h1.banner-area--info_movie-title {
+          @apply text-3xl font-bold;
+        }
+
+        .genre-list {
+          @apply flex flex-row font-bold my-2;
+
+          .genre-list--item:not(:first-child) {
+            @apply mx-0.5;
+
+            &::before {
+              @apply text-red-600 font-bold inline-block mx-1;
+              content: "\2022";
+            }
+          }
+        }
+
+        .button-wrapper {
+          @apply flex flex-row my-5;
+          .btn {
+            @apply px-8 py-2 rounded m-2 space-x-5;
+
+            &.fa-icon {
+              @apply text-sm mx-3;
+            }
+
+            &.play {
+              @apply bg-white text-black  hover:bg-white/80;
+            }
+
+            &.info {
+              @apply bg-white/30 text-white hover:bg-white/20;
+            }
+          }
+        }
+      }
+    }
   }
 }

@@ -10,7 +10,6 @@ import Logo from "/src/app/assets/img/Netflix_Logo_RGB.png"
 import Avatar from "/src/app/assets/img/Netflix-avatar.png"
 
 export default function Header() {
-
   return (
     <nav className="navbar">
       <div className="flex flex-row">
