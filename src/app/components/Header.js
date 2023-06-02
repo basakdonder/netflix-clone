@@ -18,7 +18,7 @@ export default function Header() {
             src={Logo}
             alt="Netflix Logo"
             className="logo"
-            width={150}
+            width={120}
             height={0}
           />
         </Link>
@@ -59,7 +59,7 @@ export default function Header() {
             src={Avatar}
             alt="Avatar"
             className="avatar"
-            width={40}
+            width={35}
             height={0}
           />
           <FontAwesomeIcon icon={faCaretDown} className="fa-icon w-2.5" />

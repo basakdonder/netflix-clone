@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .navbar {
-  @apply flex flex-row items-center justify-between px-5 py-3 w-full absolute top-0 left-0;
+  @apply flex flex-row items-center justify-between px-7 py-3 w-full absolute top-0 left-0;
   box-shadow: rgba(0, 0, 0, 0.7) 0px 60px 36px -28px inset;
   z-index: 99;
 
@@ -18,15 +18,16 @@
 }
 
 .page-content {
+  // BANNER AREA
   .banner-area {
     .banner-area--wrapper {
       @apply flex items-center relative w-full h-screen bg-no-repeat bg-cover bg-center;
 
       .banner-area--info {
-        @apply w-full absolute p-5 lg:w-auto lg:w-[700px];
+        @apply w-full absolute p-7 lg:w-auto lg:w-[700px];
 
         .title--wrapper {
-          @apply flex flex-row items-center space-x-2 font-bold uppercase text-neutral-200;
+          @apply flex flex-row items-center space-x-2 font-bold uppercase text-neutral-200 lg:text-2xl;
           letter-spacing: 5px;
         }
 
@@ -36,19 +37,6 @@
 
         p.banner-area--info_overview {
           @apply lg:text-lg;
-        }
-
-        .genre-list {
-          @apply flex flex-row font-bold my-2;
-
-          .genre-list--item:not(:first-child) {
-            @apply mx-0.5;
-
-            &::before {
-              @apply text-red-600 font-bold inline-block mx-1;
-              content: "\2022";
-            }
-          }
         }
 
         .button-wrapper {
@@ -66,6 +54,62 @@
 
             &.info {
               @apply bg-white/30 text-white hover:bg-white/20;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // CONTENT AREA
+  .content-area {
+    @apply py-5;
+    .slide-wrapper {
+      h2.slide-wrapper--title {
+        @apply px-7 py-5 text-2xl font-bold;
+      }
+      .splide-slide {
+        .splide-slide--item {
+          .splide-slide--container {
+            .splide-slide--container-img {
+              @apply rounded;
+            }
+
+            .splide-slide--container-body {
+              div {
+                @apply flex flex-row items-center space-x-2 my-4;
+
+                .btn {
+                  @apply flex items-center justify-center w-[40px] h-[40px] border-2 rounded-full border-gray-500 duration-300 hover:border-white;
+
+                  &.play {
+                    @apply bg-white text-black border-white;
+                  }
+                }
+
+                .vote-average {
+                  @apply text-green-500;
+                }
+
+                .is-adult {
+                  @apply py-1 px-2 border-gray-500 border text-xs;
+                }
+
+                .release-date {
+                  @apply text-gray-500;
+                }
+              }
+
+              .genre-list {
+                @apply flex flex-row my-2 text-xs;
+
+                .genre-list--item:not(:first-child) {
+                  &::before {
+                    @apply text-gray-500 font-bold inline-block mx-2;
+                    content: "\2022";
+                  }
+                }
+              }
             }
           }
         }
