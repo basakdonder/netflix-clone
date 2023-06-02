@@ -13,7 +13,7 @@
   }
 
   a {
-    @apply flex items-center justify-center space-x-2 duration-300 text-neutral-200 hover:text-neutral-400;
+    @apply flex items-center justify-center space-x-2 duration-300 text-neutral-200 hover:text-neutral-300;
   }
 }
 
@@ -26,12 +26,16 @@
         @apply w-full absolute p-5 lg:w-auto lg:w-[700px];
 
         .title--wrapper {
-          @apply flex flex-row items-center space-x-2 font-bold uppercase text-neutral-300;
+          @apply flex flex-row items-center space-x-2 font-bold uppercase text-neutral-200;
           letter-spacing: 5px;
         }
 
         h1.banner-area--info_movie-title {
           @apply text-3xl my-3 font-bold lg:text-5xl;
+        }
+
+        p.banner-area--info_overview {
+          @apply lg:text-lg;
         }
 
         .genre-list {
@@ -50,7 +54,7 @@
         .button-wrapper {
           @apply flex flex-row my-5;
           .btn {
-            @apply px-8 py-2 rounded m-2 space-x-5 font-bold;
+            @apply px-10 py-3 rounded m-2 space-x-5 lg:text-2xl;
 
             &.fa-icon {
               @apply text-sm mx-3;

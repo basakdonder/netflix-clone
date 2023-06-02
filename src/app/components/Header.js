@@ -49,12 +49,6 @@ export default function Header() {
             </Link>
           </li>
           <li className="search-item">
-            <Link href="/">KIDS</Link>
-          </li>
-          <li className="search-item">
-            <Link href="/">DVD</Link>
-          </li>
-          <li className="search-item">
             <Link href="/">
               <FontAwesomeIcon icon={faBell} className="fa-icon" />
             </Link>
