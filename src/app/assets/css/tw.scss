@@ -70,43 +70,59 @@
       }
       .splide-slide {
         .splide-slide--item {
+          @apply relative flex items-center justify-center;
+
           .splide-slide--container {
+            @apply min-h-full rounded;
+
+            &:hover {
+              @apply w-[400px] absolute top-5;
+              z-index: 999;
+              background-color: rgb(var(--background-color));
+              box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+                rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+              .splide-slide--container-img {
+                @apply min-w-full;
+              }
+
+              .splide-slide--container-body {
+                @apply block;
+              }
+            }
             .splide-slide--container-img {
-              @apply rounded;
+              @apply rounded-t;
             }
 
             .splide-slide--container-body {
-              div {
-                @apply flex flex-row items-center space-x-2 my-4;
-
+              @apply hidden p-4 h-full;
+              &__options {
+                @apply space-x-3;
                 .btn {
-                  @apply flex items-center justify-center w-[40px] h-[40px] border-2 rounded-full border-gray-500 duration-300 hover:border-white;
-
+                  @apply w-[40px] h-[40px] rounded-full border border-gray-500 duration-200 hover:bg-white/20;
                   &.play {
-                    @apply bg-white text-black border-white;
+                    @apply bg-white text-black hover:bg-white/80;
                   }
                 }
-
-                .vote-average {
+              }
+              &__info {
+                @apply space-x-3 text-gray-500 my-4;
+                .vote_average {
                   @apply text-green-500;
                 }
 
-                .is-adult {
-                  @apply py-1 px-2 border-gray-500 border text-xs;
-                }
-
-                .release-date {
-                  @apply text-gray-500;
+                .is_adult {
+                  @apply border border-gray-500 px-2;
                 }
               }
 
               .genre-list {
-                @apply flex flex-row my-2 text-xs;
-
+                @apply flex flex-row;
                 .genre-list--item:not(:first-child) {
                   &::before {
-                    @apply text-gray-500 font-bold inline-block mx-2;
                     content: "\2022";
+                    margin: 0 5px;
+                    @apply text-gray-500;
                   }
                 }
               }
