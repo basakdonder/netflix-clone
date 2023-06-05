@@ -5,23 +5,29 @@ import { useState } from "react"
 
 function MovieContainer({ movie, genres }) {
   const [isHovered, setIsHovered] = useState(false)
+
   return (
     <div
       className="splide-slide--container"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
+      {
+        isHovered ? <Image
+        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+        alt={movie.title}
+        width={400}
+        height={0}
+        className="splide-slide--container-img"
+      /> :
       <Image
-        src={
-          isHovered
-            ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-            : `https://image.tmdb.org/t/p/original${movie.poster_path}`
-        }
+        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
         alt={movie.title}
         width={300}
         height={0}
         className="splide-slide--container-img"
       />
+      }
       <div className="splide-slide--container-body">
         <div className="splide-slide--container-body__options">
           <button className="btn play">

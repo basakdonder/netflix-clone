@@ -7,8 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
   faCircleInfo,
   faPlay,
-  faPlus,
-  faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons"
 import { Splide, SplideSlide } from "@splidejs/react-splide"
 import "@splidejs/react-splide/css"
@@ -82,15 +80,18 @@ function Home() {
           <h2 className="slide-wrapper--title">Popular on Netflix</h2>
           <Splide
             options={{
-              perPage: 6,
+              perPage:6,
               pagination: false,
+              arrows:false,
               type: "loop",
               padding: "5rem",
               gap: "0.7rem",
+              autoWidth:true,
               breakpoints: {
                 768: {
                   perPage:2,
                   padding:0,
+                  autoWidth:true,
                 }
               }
             }}

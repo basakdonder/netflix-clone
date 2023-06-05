@@ -64,6 +64,7 @@
   // CONTENT AREA
   .content-area {
     @apply py-5;
+    margin-bottom: 300px;
     .slide-wrapper {
       h2.slide-wrapper--title {
         @apply px-7 py-5 text-2xl font-bold;
@@ -73,17 +74,18 @@
           @apply relative flex items-center justify-center;
 
           .splide-slide--container {
-            @apply min-h-full rounded;
+            @apply rounded;
+            height: 450px;
+            transition: height 0.3s;
 
             &:hover {
-              @apply w-[400px] absolute top-5;
+              @apply w-[400px] drop-shadow-xl;
+              height: 380px;
               z-index: 999;
-              background-color: rgb(var(--background-color));
-              box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-                rgba(0, 0, 0, 0.22) 0px 15px 12px;
+              background-color: rgb(27,27,27);
 
               .splide-slide--container-img {
-                @apply min-w-full;
+                @apply min-w-full rounded-t;
               }
 
               .splide-slide--container-body {
@@ -91,7 +93,7 @@
               }
             }
             .splide-slide--container-img {
-              @apply rounded-t;
+              @apply rounded;
             }
 
             .splide-slide--container-body {
