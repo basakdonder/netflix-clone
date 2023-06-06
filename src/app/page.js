@@ -14,12 +14,24 @@ import MovieContainer from "./components/MovieContainer"
 
 function Home() {
   const [movies, setMovies] = useState([])
+  const [topRated, setTopRated] = useState([])
+  const [upcoming, setUpcoming] = useState([])
   const [genres, setGenres] = useState([])
   const [show, setShow] = useState(true)
 
   const fetchMovies = async () => {
     const { data } = await axios.get("/api/movies")
     setMovies(data?.data.results)
+  }
+
+  const fetchTopRatedMovies = async () => {
+    const { data } = await axios.get("/api/movies/top-rated")
+    setTopRated(data?.data.results)
+  }
+
+  const fetchUpcomingMovies = async () => {
+    const { data } = await axios.get("/api/movies/upcoming")
+    setUpcoming(data?.data.results)
   }
 
   const fetchMovieGenre = async () => {
@@ -30,6 +42,8 @@ function Home() {
   useEffect(() => {
     fetchMovies()
     fetchMovieGenre()
+    fetchTopRatedMovies()
+    fetchUpcomingMovies()
     const time = setTimeout(() => {
       setShow(false)
     }, 5000)
@@ -77,7 +91,7 @@ function Home() {
 
       <div className="content-area">
         <div className="slide-wrapper">
-          <h2 className="slide-wrapper--title">Popular on Netflix</h2>
+          <h2 className="slide-wrapper--title">Popular</h2>
           <Splide
             options={{
               perPage:6,
@@ -98,6 +112,62 @@ function Home() {
             className="splide-slide"
           >
             {movies?.map((movie) => (
+              <SplideSlide key={movie.id} className="splide-slide--item">
+                <MovieContainer movie={movie} genres={genres} />
+              </SplideSlide>
+            ))}
+          </Splide>
+        </div>
+        <div className="slide-wrapper">
+          <h2 className="slide-wrapper--title">Top Rated</h2>
+          <Splide
+            options={{
+              perPage:6,
+              pagination: false,
+              arrows:false,
+              type: "loop",
+              padding: "5rem",
+              gap: "0.7rem",
+              autoWidth:true,
+              breakpoints: {
+                768: {
+                  perPage:2,
+                  padding:0,
+                  autoWidth:true,
+                }
+              }
+            }}
+            className="splide-slide"
+          >
+            {topRated?.map((movie) => (
+              <SplideSlide key={movie.id} className="splide-slide--item">
+                <MovieContainer movie={movie} genres={genres} />
+              </SplideSlide>
+            ))}
+          </Splide>
+        </div>
+        <div className="slide-wrapper">
+          <h2 className="slide-wrapper--title">Upcoming Movies</h2>
+          <Splide
+            options={{
+              perPage:6,
+              pagination: false,
+              arrows:false,
+              type: "loop",
+              padding: "5rem",
+              gap: "0.7rem",
+              autoWidth:true,
+              breakpoints: {
+                768: {
+                  perPage:2,
+                  padding:0,
+                  autoWidth:true,
+                }
+              }
+            }}
+            className="splide-slide"
+          >
+            {upcoming?.map((movie) => (
               <SplideSlide key={movie.id} className="splide-slide--item">
                 <MovieContainer movie={movie} genres={genres} />
               </SplideSlide>
