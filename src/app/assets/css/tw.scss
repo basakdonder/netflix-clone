@@ -66,6 +66,7 @@
     @apply py-5;
     margin-bottom: 300px;
     .slide-wrapper {
+      @apply mb-8;
       h2.slide-wrapper--title {
         @apply px-7 py-5 text-2xl font-bold;
       }
@@ -82,7 +83,7 @@
               @apply w-[400px] drop-shadow-xl;
               height: 380px;
               z-index: 999;
-              background-color: rgb(27,27,27);
+              background-color: rgb(27, 27, 27);
 
               .splide-slide--container-img {
                 @apply min-w-full rounded-t;

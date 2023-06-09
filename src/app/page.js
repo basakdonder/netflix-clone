@@ -4,13 +4,9 @@ import Image from "next/image"
 import NetflixSymbol from "/src/app/assets/img/Netflix_Symbol_RGB.png"
 import { useEffect, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-  faCircleInfo,
-  faPlay,
-} from "@fortawesome/free-solid-svg-icons"
-import { Splide, SplideSlide } from "@splidejs/react-splide"
+import { faCircleInfo, faPlay } from "@fortawesome/free-solid-svg-icons"
 import "@splidejs/react-splide/css"
-import MovieContainer from "./components/MovieContainer"
+import MovieList from "./components/MovieList"
 
 function Home() {
   const [movies, setMovies] = useState([])
@@ -18,6 +14,23 @@ function Home() {
   const [upcoming, setUpcoming] = useState([])
   const [genres, setGenres] = useState([])
   const [show, setShow] = useState(true)
+  const [myList, setMyList] = useState([])
+
+  const saveToLS = (movie) => {
+    localStorage.setItem("my-list", JSON.stringify(movie))
+  }
+
+  const addMyList = (movie) => {
+    const newMyList = [...myList, movie]
+    setMyList(newMyList)
+    saveToLS(newMyList)
+  }
+
+  const removeMyList = (movie) => {
+    const newMyList = myList.filter((m) => m.id !== movie.id)
+    setMyList(newMyList)
+    saveToLS(newMyList)
+  }
 
   const fetchMovies = async () => {
     const { data } = await axios.get("/api/movies")
@@ -38,6 +51,11 @@ function Home() {
     const { data } = await axios.get("/api/genre/movie")
     setGenres(data?.data.genres)
   }
+
+  useEffect(() => {
+    const lsMyList = JSON.parse(localStorage.getItem("my-list"));
+    setMyList(lsMyList);
+  }, [])
 
   useEffect(() => {
     fetchMovies()
@@ -92,87 +110,35 @@ function Home() {
       <div className="content-area">
         <div className="slide-wrapper">
           <h2 className="slide-wrapper--title">Popular</h2>
-          <Splide
-            options={{
-              perPage:6,
-              pagination: false,
-              arrows:false,
-              type: "loop",
-              padding: "5rem",
-              gap: "0.7rem",
-              autoWidth:true,
-              breakpoints: {
-                768: {
-                  perPage:2,
-                  padding:0,
-                  autoWidth:true,
-                }
-              }
-            }}
-            className="splide-slide"
-          >
-            {movies?.map((movie) => (
-              <SplideSlide key={movie.id} className="splide-slide--item">
-                <MovieContainer movie={movie} genres={genres} />
-              </SplideSlide>
-            ))}
-          </Splide>
+          <MovieList
+            movies={movies}
+            genres={genres}
+            handleMyListClick={addMyList}
+          />
+        </div>
+        <div className="slide-wrapper">
+          <h2 className="slide-wrapper--title">My List</h2>
+          <MovieList
+            movies={myList}
+            genres={genres}
+            handleMyListClick={removeMyList}
+          />
+        </div>
+        <div className="slide-wrapper">
+          <h2 className="slide-wrapper--title">Upcoming</h2>
+          <MovieList
+            movies={upcoming}
+            genres={genres}
+            handleMyListClick={addMyList}
+          />
         </div>
         <div className="slide-wrapper">
           <h2 className="slide-wrapper--title">Top Rated</h2>
-          <Splide
-            options={{
-              perPage:6,
-              pagination: false,
-              arrows:false,
-              type: "loop",
-              padding: "5rem",
-              gap: "0.7rem",
-              autoWidth:true,
-              breakpoints: {
-                768: {
-                  perPage:2,
-                  padding:0,
-                  autoWidth:true,
-                }
-              }
-            }}
-            className="splide-slide"
-          >
-            {topRated?.map((movie) => (
-              <SplideSlide key={movie.id} className="splide-slide--item">
-                <MovieContainer movie={movie} genres={genres} />
-              </SplideSlide>
-            ))}
-          </Splide>
-        </div>
-        <div className="slide-wrapper">
-          <h2 className="slide-wrapper--title">Upcoming Movies</h2>
-          <Splide
-            options={{
-              perPage:6,
-              pagination: false,
-              arrows:false,
-              type: "loop",
-              padding: "5rem",
-              gap: "0.7rem",
-              autoWidth:true,
-              breakpoints: {
-                768: {
-                  perPage:2,
-                  padding:0,
-                  autoWidth:true,
-                }
-              }
-            }}
-            className="splide-slide"
-          >
-            {upcoming?.map((movie) => (
-              <SplideSlide key={movie.id} className="splide-slide--item">
-                <MovieContainer movie={movie} genres={genres} />
-              </SplideSlide>
-            ))}
-          </Splide>
+          <MovieList
+            movies={topRated}
+            genres={genres}
+            handleMyListClick={addMyList}
+          />
         </div>
       </div>
     </div>
