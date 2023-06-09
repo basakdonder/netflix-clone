@@ -23,3 +23,5 @@ Run project
 ```
 npm run dev
 ```
+
+Done! project started on localhost:3000
